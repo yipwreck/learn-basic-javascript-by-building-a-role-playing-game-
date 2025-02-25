@@ -33,8 +33,7 @@ const weapons = [
         name: "sword",
         power: 100,
     }
-
-]
+];
 
 const locations = [
     {
@@ -69,7 +68,6 @@ function update(location) {
     button1.onclick = location["button functions"][0];
     button2.onclick = location["button functions"][1];
     button3.onclick = location["button functions"][2];
-    text.innerText = "You are in the town square. You see a sign that says \"Store.\"";
     text.innerText = location.text;
 }
 
@@ -89,22 +87,37 @@ function fightDragon() {
     console.log("Fighting dragon.");
 }
 
-
 function buyHealth() {
     if (gold >= 10) {
         gold -= 10;
         health += 10;
         goldText.innerText = gold;
         healthText.innerText = health;
-        }
+    }
 }
 
 function buyWeapon() {
-    if (gold >= 30) {
-        gold -= 30;
-        currentWeaponIndex++;
-        goldText.innerText = gold;
-        let newWeapon = weapons[currentWeaponIndex];
-        text.innerText = "You have a new weapon.";
+    if (currentWeaponIndex < weapons.length) {
+        if (gold >= 30) {
+            gold -= 30;
+            currentWeaponIndex++;
+            goldText.innerText = gold;
+            let newWeapon = weapons[currentWeaponIndex].name;
+            text.innerText = "You now have a new weapon.";
+            inventory.push(newWeapon);
+            text.innerText += " In your inventory you have: " + inventory.join(", ");
+        } else {
+            text.innerText = "You do not have enough gold to buy a weapon.";
+        }
+    } else {
+        text.innerText = "You already have the best weapon.";
     }
+}
+
+function fightSlime() {
+    console.log("Fighting slime.");
+}
+
+function fightBeast() {
+    console.log("Fighting fanged beast.");
 }
