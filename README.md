@@ -22,7 +22,7 @@ Getting Started
 
 Clone this repository:
 
-git clone https://github.com/yourusername/javascript-rpg.git
+git clone https://github.com/yipwreck/javascript-rpg.git
 
 Open index.html in your browser.
 
